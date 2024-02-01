@@ -15,7 +15,7 @@ const Timeline = ({details}) => {
                     </div>
                     <div className="hidden md:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                 </div>
-                <div className="mt-3 md:pe-14">
+                <div className={`mt-3 ${index == details.length-1 ? '' : 'md:pe-32'}`}>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{detail.company} - {detail.location}</h3>
                     <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{detail.dates}</time>
                     <p className="text-base font-normal text-gray-500 dark:text-gray-400">{detail.duration}</p>
