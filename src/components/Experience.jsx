@@ -1,16 +1,42 @@
+import Timeline from "./Timeline"
+
+const details = [
+  {
+    company: 'Michelin',
+    designation: 'Digital Solutions Developer I',
+    role: 'Specialist, Frontend Developer',
+    duration: '2.7 years',
+    location: 'Pune, India',
+    dates: 'December 2020 - July 2023'
+  },
+  {
+    company: 'Michelin',
+    designation: 'Intern',
+    role: 'Specialist, Frontend Developer',
+    duration: '5 Months',
+    location: 'Pune, India',
+    dates: 'January 2020 - May 2020'
+  },
+  {
+    company: 'BlueCoin IoT Solutions',
+    designation: 'Intern',
+    role: 'Web Security and Vulnerabilitiees',
+    duration: '2 Months',
+    location: 'Pune, India',
+    dates: 'June 2019 - July 2019'
+  }
+]
+
 const Experience = () => {
-    return <div id="experience" className="min-h-screen relative isolate overflow-hidden bg-black py-24 sm:py-32 flex items-center">
-    <div
-      className="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu"
-      aria-hidden="true"
-    ></div>
-    <div className="flex flex-col items-center mx-auto px-6 lg:px-8">
+    return <div id="experience" className="min-h-screen relative isolate overflow-hidden bg-gradient-to-r from-gray-950 to-zinc-800 py-24 sm:py-32  flex justify-center items-center">
+    <div className="flex flex-col items-center mx-auto">
       <div className="mx-auto lg:mx-0">
-        <div className="flex items-center gap-x-16 md:items-start gap-y-10 gap-x-6 flex-col md:flex-row text-center md:text-left">
-          <div className="ml-4 md:ml-0 flex flex-col gap-y-8">
-            <h1 className="text-white max-w-[550px] text-5xl font-bold leading-[48px] tracking-widest">
+        <div className="flex items-center justify-center gap-x-16 md:items-start gap-y-10 gap-x-6 flex-col md:flex-row  md:text-left">
+          <div className="ml-4 md:ml-0 flex items-center flex-col gap-y-16">
+            <h1 className="text-white text-5xl font-bold leading-[48px] tracking-widest">
               Experience
             </h1>
+            <Timeline details={details}/>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import Education from "./Education"
 import Experience from "./Experience"
 import Skills from "./Skills"
+import Projects from "./Projects"
 
 const Body = () => {
     return <>
@@ -8,6 +9,7 @@ const Body = () => {
             <Skills></Skills>
             <Education></Education>
             <Experience></Experience>
+            <Projects></Projects>
         </div>
     </>    
 }
