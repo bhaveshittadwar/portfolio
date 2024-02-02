@@ -28,7 +28,7 @@ export default function Panel() {
               <p className="text-white max-w-[550px] text-5xl font-bold leading-[48px] tracking-widest">
                 A front-end leaning fullstack developer.
               </p>
-              <p className="max-w-[550px] text-white text-xl font-medium font-['Inter'] leading-tight tracking-wide">I'm keen about the web from a packet to pixel level.</p>
+              <p className="max-w-[550px] text-white text-xl font-medium leading-tight tracking-wide">I'm keen about the web from a packet to pixel level.</p>
               <div className="grid grid-cols-1 mt-8 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
                 {links.map((link) => (
                   <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className='flex justify-center gap-2'>
