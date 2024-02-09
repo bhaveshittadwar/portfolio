@@ -44,9 +44,9 @@ const Skills = () => {
                       <div className="ml-2 h-3 w-3 bg-green-500 rounded-full"></div>
                   </div>
                   {skills.map((skillCategory, index) => (
-                    <div className={`${index == 0 ? 'mt-4' : 'mt-1'} flex`} key={index}>
-                        <span className="text-green-400">{skillCategory.category}:~$</span>
-                        <p className="flex-1 typing items-center pl-2">
+                    <div className={`${index == 0 ? 'mt-4' : 'mt-1'} flex flex-col sm:flex-row`} key={index}>
+                        <span className="text-green-400 text-left">{skillCategory.category}:~$</span>
+                        <p className="flex-1 typing items-center pl-2 text-left">
                           {skillCategory.skillList}
                             <br />
                         </p>

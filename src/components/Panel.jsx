@@ -1,10 +1,10 @@
 import photo from '../assets/panelPic.jpeg';
+import { Link } from 'react-router-dom'; 
 
 const links = [
-  { name: 'Resume', href: '#' },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/bhavesh-ittadwar/' },
   { name: 'Github', href: 'https://github.com/bhaveshittadwar' },
-  { name: 'Projects', href: '#' },
+  { name: 'Resume', href: 'https://bhavesh-ittadwar-resume.tiiny.site/' },
 ];
 
 export default function Panel() {
@@ -31,9 +31,9 @@ export default function Panel() {
               <p className="max-w-[550px] text-white text-xl font-medium leading-tight tracking-wide">I'm keen about the web from a packet to pixel level.</p>
               <div className="grid grid-cols-1 mt-8 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-white sm:grid-cols-2 md:flex lg:gap-x-10">
                 {links.map((link) => (
-                  <a key={link.name} href={link.href} target="_blank" rel="noopener noreferrer" className='flex justify-center gap-2'>
+                  <Link key={link.name} target='_blank' to={link.href} className='flex justify-center gap-2'>
                     {link.name} <span aria-hidden="true">&rarr;</span>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
