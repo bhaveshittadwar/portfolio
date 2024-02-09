@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const links = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/bhavesh-ittadwar/' },
   { name: 'Github', href: 'https://github.com/bhaveshittadwar' },
-  { name: 'Resume', href: 'https://bhavesh-ittadwar-resume.tiiny.site/' },
+  { name: 'Resume', href: 'https://github.com/bhaveshittadwar/portfolio/blob/main/src/assets/Resume-4.1.2.pdf' },
 ];
 
 export default function Panel() {
