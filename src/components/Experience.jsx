@@ -4,7 +4,7 @@ const details = [
   {
     company: 'Michelin',
     designation: 'Digital Solutions Developer I',
-    role: 'Specialist, Frontend Developer',
+    role: 'Specialist - Sofware Engineer',
     duration: '2.7 years',
     location: 'Pune, India',
     dates: 'December 2020 - July 2023'
@@ -12,7 +12,7 @@ const details = [
   {
     company: 'Michelin',
     designation: 'Intern',
-    role: 'Specialist, Frontend Developer',
+    role: 'Specialist - Sofware Engineer',
     duration: '5 Months',
     location: 'Pune, India',
     dates: 'January 2020 - May 2020'
@@ -20,7 +20,7 @@ const details = [
   {
     company: 'BlueCoin IoT Solutions',
     designation: 'Intern',
-    role: 'Web Security and Vulnerabilitiees',
+    role: 'Software Developer - Web Security',
     duration: '2 Months',
     location: 'Pune, India',
     dates: 'June 2019 - July 2019'
