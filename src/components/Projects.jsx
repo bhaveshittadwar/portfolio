@@ -1,6 +1,12 @@
 import Card from './Card.jsx'
 const projects = [
   {
+    title: 'Serverless Blogging',
+    description: 'Built a blogging platform with Cloudflare Workers, Prisma, and React',
+    projectImage: '', 
+    link: 'https://github.com/bhaveshittadwar/blog-app',
+  },
+  {
     title: 'Live Streaming Platform',
     description: 'Architected a global video game streaming platform, leveraging cloud technologies and incorporating multi-stage designs. Conducted experiments using Locust and Minikube to assess pod auto-scaling.',
     projectImage: '', 
