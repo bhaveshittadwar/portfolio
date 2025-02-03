@@ -1,25 +1,23 @@
 const skills = [
   {
     category: 'Languages',
-    skillList: 'JavaScript, Java, C, C++, HTML, CSS'
+    skillList: 'JavaScript, TypeScript, Java, HTML, CSS'
   },
   {
-    category: 'Frameworks/Runtime(s)',
-    skillList: 'ReactJS, NodeJS, MongoDB, Sass, Express, Tailwind, Bootstrap'
+    category: 'Development Tools',
+    skillList: 'React, Next.js, Svelte, Node.js, Tailwind, Figma, Storybook, GraphQL'
   },
   {
-    category: 'Databases',
-    skillList: 'MongoDB'
+    category: 'Infrastructure Tools',
+    skillList: 'Docker, Kubernetes, Kafka, GitHub, Azure, AWS, MongoDB, PostgreSQL'
   },
   {
-    category: 'Tools',
-    skillList: 'Apostrophe CMS, Docker, Kubernetes, WebPack, Kafka, GitHub, Gitlab'
-  },
-  {
-    category: 'Security',
-    skillList: 'OWASP ZAP, SonarQube, Penetration Testing'
+    category: 'Methodologies',
+    skillList: 'Agile, OOP, Micro-frontends, Atomic Design'
   }
 ];
+
+
 
 
 const Skills = () => {
