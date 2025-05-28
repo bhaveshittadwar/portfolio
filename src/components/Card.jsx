@@ -1,25 +1,43 @@
 import React from 'react';
 
-const Card = ({title, description, projectImage, link}) => {
+const Card = ({ title, description, projectImage, links = [] }) => {
   return (
-    <div className="w-full max-w-sm bg-slate-300 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <a href="#">
-        <img className="rounded-t-lg" src={projectImage} alt="" />
-      </a>
-      <div className="p-5 h-full flex flex-col">
-        <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{title}</h5>
+    <div className="w-full max-w-sm bg-[#1f2937] border border-gray-700 rounded-xl shadow-md p-6 flex flex-col justify-between transition-transform transform hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(93,188,252,0.25)] duration-300 ease-in-out group">
+      {projectImage && (
+        <a href={links[0]?.url || '#'} target="_blank" rel="noopener noreferrer">
+          <img className="rounded-t-lg mb-4" src={projectImage} alt={title} />
         </a>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{description}</p>
-        <a href={link} target='_blank' className="w-fit mt-auto inline-flex items-center px-3 py-2 text-sm font-medium text-center text-gray-950 bg-blue-700 rounded-lg hover:text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-slate-200 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Let's Go
-          <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-          </svg>
-        </a>
+      )}
+      <div className="flex flex-col gap-3 flex-grow">
+        <h5 className="text-xl font-semibold text-white group-hover:text-blue-300 transition-colors duration-300">
+          {title}
+        </h5>
+        <p className="text-sm text-gray-300 leading-relaxed">{description}</p>
+      </div>
+      <div className="mt-5 flex flex-wrap gap-2">
+        {links.map(({ label, url }, i) => (
+          <a
+            key={i}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-1.5 rounded-md border border-gray-600 px-3 py-1.5 text-sm text-gray-200 transition-all duration-300 hover:bg-white hover:text-[#1f2937] hover:shadow-md"
+          >
+            {label}
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        ))}
       </div>
     </div>
   );
-}
+};
 
 export default Card;

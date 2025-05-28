@@ -1,6 +1,6 @@
 import React from 'react';
 import { Document, Page } from 'react-pdf';
-import resumePDF from '../assets/Resume-4.1.2.pdf'
+import resumePDF from '../assets/Resume.pdf'
 
 const ResumePDF = () => {
   return (

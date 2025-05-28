@@ -1,53 +1,122 @@
-import Card from './Card.jsx'
+import { motion } from 'framer-motion';
+import Card from './Card.jsx';
+
 const projects = [
   {
+    title: 'Distributed Kanban Board',
+    description:
+      'Real-time collaborative board with optimistic concurrency, Google OAuth, and socket-based sync. Deployed on Fly.io.',
+    projectImage: '',
+    links: [
+      { label: 'Live Demo', url: 'https://kanban-ui.fly.dev/' },
+      { label: 'GitHub', url: 'https://github.com/bhaveshittadwar/distributed-kanban-board' },
+    ],
+  },
+  {
+    title: 'Order Service',
+    description:
+      'Spring Boot microservice with REST and gRPC endpoints, PostgreSQL persistence, and GitHub Actions-based CI/CD.',
+    projectImage: '',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/bhaveshittadwar/ordersrv' },
+    ],
+  },
+  {
+    title: 'HackNCState – Pack The Feed',
+    description:
+      'Hackathon project to redistribute surplus dining hall food using Next.js, Flask, OpenAI, and MongoDB.',
+    projectImage: '',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/Varad22/hackNCState' },
+    ],
+  },
+  {
     title: 'Serverless Blogging',
-    description: 'Built a blogging platform with Cloudflare Workers, Prisma, and React',
-    projectImage: '', 
-    link: 'https://github.com/bhaveshittadwar/blog-app',
+    description:
+      'Built a blogging platform using Cloudflare Workers (Edge compute), Prisma ORM, and a React-based frontend.',
+    projectImage: '',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/bhaveshittadwar/blog-app' },
+    ],
   },
   {
     title: 'Live Streaming Platform',
-    description: 'Architected a global video game streaming platform, leveraging cloud technologies and incorporating multi-stage designs. Conducted experiments using Locust and Minikube to assess pod auto-scaling.',
-    projectImage: '', 
-    link: 'https://github.com/bhaveshittadwar/live-stream-kubernetes/blob/main/report.pdf', 
+    description:
+      'Architected a global video game streaming platform using Kubernetes and tested pod auto-scaling with Locust and Minikube.',
+    projectImage: '',
+    links: [
+      { label: 'Report PDF', url: 'https://github.com/bhaveshittadwar/live-stream-kubernetes/blob/main/report.pdf' },
+    ],
   },
   {
-    title: 'BurnOut',
-    description: 'Instilled UI responsiveness in a calorie tracker, implemented two-factor authentication, captcha verification, and Dockerized the application.',
+    title: 'BurnOut – Calorie Tracker',
+    description:
+      'Added UI responsiveness, two-factor authentication, captcha verification, and Dockerized deployment.',
     projectImage: '',
-    link: 'https://github.com/anuj672/calorieApp_server',
+    links: [
+      { label: 'GitHub', url: 'https://github.com/anuj672/calorieApp_server' },
+    ],
   },
   {
     title: 'Game of Life: John Convoy',
-    description: 'Playing around with canvas and implementing a zero player game to understand turing completelness.',
+    description:
+      'Implemented Conway’s Game of Life using HTML Canvas to explore Turing completeness via cellular automata.',
     projectImage: '',
-    link: 'https://game-of-life-ktce.onrender.com/'
-  }
+    links: [
+      { label: 'Live Demo', url: 'https://game-of-life-withered-snow-9415.fly.dev/' },
+      { label: 'GitHub', url: 'https://github.com/bhaveshittadwar/game-of-life' },
+    ],
+  },
 ];
 
-
 const Projects = () => {
-    return <div id="projects" className="min-h-screen relative isolate overflow-hidden bg-gradient-to-r from-gray-950 to-zinc-800 py-24 sm:py-32 flex items-center">
-    <div className="flex flex-col items-center mx-auto px-6 lg:px-8">
-      <div className="mx-auto lg:mx-0">
-        <div className="flex items-center gap-x-16 md:items-start gap-y-10 gap-x-6 flex-col md:flex-row text-center md:text-left">
-          <div className="ml-4 md:ml-0 flex flex-col gap-y-8">
-            <h1 className="justify-self-center text-white text-5xl font-bold leading-[48px] tracking-widest text-center">
-              Projects
-            </h1>
-
-            <div className="flex flex-col md:flex-row gap-8">
-              {projects.map(({title, description, projectImage, link}, index) => (
-                <Card key={index} title={title} description={description} projectImage={projectImage} link={link} />
-              ))}
+  return (
+    <motion.div
+      id="projects"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="min-h-screen relative isolate overflow-hidden bg-gradient-to-r from-gray-950 to-zinc-800 py-24 sm:py-32 flex items-center"
+    >
+      <div className="flex flex-col items-center mx-auto px-6 lg:px-16">
+        <div className="mx-auto lg:mx-0">
+          <div className="flex items-center gap-x-16 md:items-start gap-y-10 gap-x-6 flex-col md:flex-row text-center md:text-left">
+            <div className="ml-4 md:ml-0 flex flex-col gap-y-8">
+              <motion.h1
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="justify-self-center text-white text-5xl font-bold leading-[48px] tracking-widest text-center"
+              >
+                Projects
+              </motion.h1>
+              <div className="flex flex-wrap justify-center gap-8">
+                {projects.map(({ title, description, projectImage, links }, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <Card
+                      title={title}
+                      description={description}
+                      projectImage={projectImage}
+                      links={links}
+                      className="transition-all duration-300 hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(93,188,252,0.4)]"
+                    />
+                  </motion.div>
+                ))}
+              </div>
             </div>
-              
           </div>
         </div>
       </div>
-    </div>
-  </div>
-}
+    </motion.div>
+  );
+};
 
-export default Projects
+export default Projects;
