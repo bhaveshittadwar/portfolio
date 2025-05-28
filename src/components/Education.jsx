@@ -4,6 +4,7 @@ import TimelineVerticle from './TimelineVerticle';
 const details = [
   {
     college: 'North Carolina State University',
+    collegeUrl: 'https://www.ncsu.edu/',
     city: 'Raleigh',
     state: 'North Carolina',
     country: 'United States',
@@ -19,6 +20,7 @@ const details = [
   },
   {
     college: 'Vishwakarma Institute of Technology',
+    collegeUrl: 'https://www.vit.edu/',
     city: 'Pune',
     state: 'Maharashtra',
     country: 'India',

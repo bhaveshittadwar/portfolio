@@ -1,5 +1,8 @@
-import { motion } from 'framer-motion';
-import Card from './Card.jsx';
+// src/components/Projects.jsx
+import React from 'react'
+import { Element } from 'react-scroll'
+import { motion } from 'framer-motion'
+import Card from './Card.jsx'
 
 const projects = [
   {
@@ -67,56 +70,51 @@ const projects = [
       { label: 'GitHub', url: 'https://github.com/bhaveshittadwar/game-of-life' },
     ],
   },
-];
+]
 
-const Projects = () => {
+export default function Projects() {
   return (
-    <motion.div
-      id="projects"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      className="min-h-screen relative isolate overflow-hidden bg-gradient-to-r from-gray-950 to-zinc-800 py-24 sm:py-32 flex items-center"
-    >
-      <div className="flex flex-col items-center mx-auto px-6 lg:px-16">
-        <div className="mx-auto lg:mx-0">
-          <div className="flex items-center gap-x-16 md:items-start gap-y-10 gap-x-6 flex-col md:flex-row text-center md:text-left">
-            <div className="ml-4 md:ml-0 flex flex-col gap-y-8">
-              <motion.h1
-                initial={{ opacity: 0, y: 10 }}
+    <Element name="projects">
+      <motion.section
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="min-h-screen flex items-center bg-gradient-to-r from-gray-950 to-zinc-800 py-24 sm:py-32"
+      >
+        <div className="mx-auto px-6 lg:px-24 w-full">
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center text-white text-5xl font-bold tracking-widest mb-12"
+          >
+            Projects
+          </motion.h1>
+
+          <div className="flex flex-wrap justify-center gap-8">
+            {projects.map((project, i) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="justify-self-center text-white text-5xl font-bold leading-[48px] tracking-widest text-center"
+                whileHover={{ scale: 1.03 }}
+                className="w-full sm:w-80"
               >
-                Projects
-              </motion.h1>
-              <div className="flex flex-wrap justify-center gap-8">
-                {projects.map(({ title, description, projectImage, links }, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <Card
-                      title={title}
-                      description={description}
-                      projectImage={projectImage}
-                      links={links}
-                      className="transition-all duration-300 hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(93,188,252,0.4)]"
-                    />
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+                <Card
+                  title={project.title}
+                  description={project.description}
+                  projectImage={project.projectImage}
+                  links={project.links}
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
-      </div>
-    </motion.div>
-  );
-};
-
-export default Projects;
+      </motion.section>
+    </Element>
+  )
+}
