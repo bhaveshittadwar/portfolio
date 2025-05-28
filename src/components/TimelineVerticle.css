@@ -1,3 +1,47 @@
 .shadow-custom {
     box-shadow: 0 0 12px 3.5px lightgray;
 }
+
+/* Pulsing lighthouse effect on the first dot */
+@keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  
+  .pulse-dot {
+    animation: pulse 1s ease-in-out infinite;
+    transform-origin: center center;
+  }
+
+  @keyframes underline-grow {
+    0%   { width: 0%; left: 0; }
+    80%  { width: 100%; left: 0; }
+    100% { width: 100%; left: 0; }
+  }
+  
+  @keyframes underline-shrink {
+    0%   { width: 100%; left: 0; }
+    20%  { width: 100%; left: 0; }
+    100% { width: 0%; left: 100%; }
+  }
+  
+  .underline-anim {
+    position: relative;
+    display: inline-block;
+  }
+  .underline-anim::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    background-color: #38bdf8; /* sky-400 */
+    width: 0;
+    left: 0;
+    animation: 
+      underline-grow 0.6s ease-in-out forwards,
+      underline-shrink 0.6s ease-in-out forwards 2s; /* 2s delay before shrinking */
+  }
