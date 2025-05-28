@@ -1,0 +1,58 @@
+/* Pulsing photo */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.03); }
+}
+
+.pulse-image {
+  display: block;
+  border-radius: 9999px;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Grow L→R then shrink L→R */
+@keyframes underlineLR {
+  0% {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+  50% {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+  50.0001% {
+    transform-origin: right;
+    transform: scaleX(1);
+  }
+  100% {
+    transform-origin: right;
+    transform: scaleX(0);
+  }
+}
+
+.underline-anim {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.underline-anim::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  /* metallic base + subtle sheen */
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.15) 0%,
+      rgba(255,255,255,0.35) 50%,
+      rgba(255,255,255,0.15) 100%
+    ),
+    #38bdf8; /* Tailwind sky-400 base color */
+  background-blend-mode: overlay;
+  transform: scaleX(0);
+  animation: underlineLR 4s ease-in-out forwards;
+  animation-delay: var(--delay, 0s);
+}
