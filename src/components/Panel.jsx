@@ -44,7 +44,7 @@ export default function Panel() {
         </motion.div>
 
         <motion.div
-          className="order-1 lg:order-2 flex flex-col items-center lg:items-start text-center lg:text-left gap-y-6"
+          className="order-1 lg:order-2 flex flex-col items-center text-center gap-y-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
