@@ -1,25 +1,27 @@
-import { motion } from 'framer-motion';
-import logo from '../assets/logo.png';
-import { Link } from 'react-scroll';
+import { motion } from 'framer-motion'
+import logo from '../assets/logo.png'
 
-const Footer = () => {
+const Footer = ({ onNavClick }) => {
   return (
     <motion.footer
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="bg-gradient-to-r from-gray-950 to-zinc-800"
+      className="flex flex-col justify-between bg-gradient-to-r from-gray-950 to-zinc-800"
     >
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
-            <Link to="panel" smooth={true} duration={500} className="flex items-center cursor-pointer">
+            <button
+              onClick={() => onNavClick('panel')}
+              className="flex items-center cursor-pointer"
+            >
               <img src={logo} className="h-8 me-3" alt="Portfolio Logo" />
               <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
                 Bhavesh Ittadwar
               </span>
-            </Link>
+            </button>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">
             <div>
@@ -27,9 +29,12 @@ const Footer = () => {
               <ul className="text-gray-400 font-medium">
                 {['skills', 'education', 'experience', 'projects'].map((section) => (
                   <li key={section} className="mb-4">
-                    <Link to={section} smooth duration={500} className="hover:underline capitalize">
+                    <button
+                      onClick={() => onNavClick(section)}
+                      className="hover:underline capitalize"
+                    >
                       {section}
-                    </Link>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -72,7 +77,7 @@ const Footer = () => {
         </div>
       </div>
     </motion.footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
