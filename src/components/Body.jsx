@@ -3,15 +3,15 @@ import Experience from "./Experience"
 import Skills from "./Skills"
 import Projects from "./Projects"
 
-const Body = () => {
-    return <>
-        <div>
-            <Skills></Skills>
-            <Education></Education>
-            <Experience></Experience>
-            <Projects></Projects>
-        </div>
-    </>    
+const Body = ({ skillsRef, educationRef, experienceRef, projectsRef }) => {
+  return (
+    <div>
+      <div ref={skillsRef}><Skills /></div>
+      <div ref={educationRef}><Education /></div>
+      <div ref={experienceRef}><Experience /></div>
+      <div ref={projectsRef}><Projects /></div>
+    </div>
+  )
 }
 
 export default Body
