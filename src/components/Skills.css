@@ -1,0 +1,12 @@
+.blinking-cursor {
+  display: inline-block;
+  width: 1ch;
+  color: #38bdf8; /* sky‑400 */
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 0; }
+  50%      { opacity: 1; }
+}
+
