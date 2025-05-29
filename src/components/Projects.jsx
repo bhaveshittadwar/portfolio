@@ -1,8 +1,6 @@
-// src/components/Projects.jsx
 import React from 'react'
-import { Element } from 'react-scroll'
 import { motion } from 'framer-motion'
-import Card from './Card.jsx'
+import Card from './Card'
 
 const projects = [
   {
@@ -74,47 +72,42 @@ const projects = [
 
 export default function Projects() {
   return (
-    <Element name="projects">
-      <motion.section
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="min-h-screen flex items-center bg-gradient-to-r from-gray-950 to-zinc-800 py-24 sm:py-32"
-      >
-        <div className="mx-auto px-6 lg:px-24 w-full">
-          <motion.h1
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center text-white text-5xl font-bold tracking-widest mb-12"
-          >
-            Projects
-          </motion.h1>
+    <section
+      id="projects"
+      className="min-h-[calc(100vh-4.5rem)] flex items-center bg-gradient-to-r from-gray-950 to-zinc-800 py-24 sm:py-32"
+    >
+      <div className="mx-auto px-6 lg:px-24 w-full">
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center text-white text-5xl font-bold tracking-widest mb-12"
+        >
+          Projects
+        </motion.h1>
 
-          <div className="flex flex-wrap justify-center gap-8">
-            {projects.map((project, i) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.03 }}
-                className="w-full sm:w-80"
-              >
-                <Card
-                  title={project.title}
-                  description={project.description}
-                  projectImage={project.projectImage}
-                  links={project.links}
-                />
-              </motion.div>
-            ))}
-          </div>
+        <div className="flex flex-wrap justify-center gap-8">
+          {projects.map((project, i) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.03 }}
+              className="w-full sm:w-80 flex justify-center"
+            >
+              <Card
+                title={project.title}
+                description={project.description}
+                projectImage={project.projectImage}
+                links={project.links}
+              />
+            </motion.div>
+          ))}
         </div>
-      </motion.section>
-    </Element>
+      </div>
+    </section>
   )
 }
