@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import { FaArrowRight } from 'react-icons/fa'
-import { scroller }    from 'react-scroll'
 import './PanelCTA.css'
 
 export default function PanelCTA() {
@@ -14,11 +13,7 @@ export default function PanelCTA() {
     btn.classList.add('active')
     setTimeout(() => {
       btn.classList.remove('active')
-      scroller.scrollTo('projects', {
-        delay: 0,
-        smooth: 'easeInOutBack',
-        duration: 3000,
-      })
+      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
     }, 150)
   }
 
@@ -30,8 +25,7 @@ export default function PanelCTA() {
       aria-label="See Projects"
     >
       <span className="shadow" />
-      <span className="edge"   />
-      {/* wrap only the text in btn-text */}
+      <span className="edge" />
       <span className="front">
         <span className="btn-text">See Projects</span>
         <FaArrowRight />
