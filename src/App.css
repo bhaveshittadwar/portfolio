@@ -1,0 +1,48 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.scroll-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+#scroll-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+#scroll-container::-webkit-scrollbar-track {
+  background: transparent !important;
+  border-radius: 10px;
+  margin-block: 0.5rem;
+}
+
+#scroll-container::-webkit-scrollbar-thumb {
+  background-color: #52525b;
+  border-radius: 10px;
+  border: 2px solid #0f0f0f;
+}
+
+#scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: #71717a;
+}
+
+/* Firefox */
+#scroll-container {
+  scrollbar-width: thin;
+  scrollbar-color: #52525b #0f0f0f;
+}
+
+#scroll-container::-webkit-scrollbar-track {
+    background-color: transparent !important;
+    border-radius: 10px;
+    box-shadow: none !important;
+}
+
+#scroll-container {
+    scrollbar-color: #52525b transparent;
+    scrollbar-width: thin;
+}
