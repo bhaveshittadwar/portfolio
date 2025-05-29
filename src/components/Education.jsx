@@ -56,7 +56,7 @@ const Education = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
-      className="bg-gradient-to-r from-gray-950 to-zinc-800 min-h-screen relative isolate overflow-hidden py-24 sm:py-32 sm:px-16 flex items-center"
+      className="bg-gradient-to-r from-gray-950 to-zinc-800 min-h-[calc(100vh-4.5rem)] relative isolate overflow-hidden py-24 sm:py-32 sm:px-16 flex items-center"
     >
       <div className="flex flex-col items-center mx-auto px-6 lg:px-8">
         <div className="mx-auto lg:mx-0">
