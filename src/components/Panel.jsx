@@ -1,22 +1,22 @@
-import { motion } from 'framer-motion';
-import photo from '../assets/panelPic.jpeg';
-import PanelCTA from './PanelCTA';
-import './PanelAnimations.css';
-import { FaLinkedin, FaGithub, FaFilePdf } from 'react-icons/fa';
+import { motion } from 'framer-motion'
+import photo from '../assets/panelPic.jpeg'
+import PanelCTA from './PanelCTA'
+import { FaLinkedin, FaGithub, FaFilePdf } from 'react-icons/fa'
+import './PanelAnimations.css'
 
 const socialLinks = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/bhavesh-ittadwar/', Icon: FaLinkedin },
-  { name: 'Github',   href: 'https://github.com/bhaveshittadwar',           Icon: FaGithub   },
-  { name: 'Resume',   href: 'https://github.com/bhaveshittadwar/portfolio/blob/main/src/assets/Resume.pdf', Icon: FaFilePdf  },
-];
+  { name: 'Github', href: 'https://github.com/bhaveshittadwar', Icon: FaGithub },
+  { name: 'Resume', href: 'https://github.com/bhaveshittadwar/portfolio/blob/main/src/assets/Resume.pdf', Icon: FaFilePdf },
+]
 
 export default function Panel() {
   return (
     <div
       id="panel"
-      className="min-h-screen w-full bg-gradient-to-r from-gray-950 to-zinc-800 flex items-center justify-center px-6 lg:px-8"
+      className="min-h-[calc(100vh-4.5rem)] w-full bg-gradient-to-r from-gray-950 to-zinc-800 flex items-center justify-center px-6 lg:px-8 py-12"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 w-full max-w-7xl">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 w-full max-w-7xl items-center">
         {/* Game embed */}
         <motion.div
           className="order-2 lg:order-1 relative w-full h-[480px] rounded-xl border border-gray-700 bg-zinc-900/40 shadow-lg overflow-hidden transform transition hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(93,188,252,0.25)] backdrop-blur-sm"
@@ -51,7 +51,6 @@ export default function Panel() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          {/* Pulsing photo */}
           <motion.img
             src={photo}
             alt="Bhavesh Ittadwar"
@@ -60,11 +59,8 @@ export default function Panel() {
             aria-hidden="true"
           />
 
-          <h2 className="text-sky-400 text-2xl font-medium">
-            Hi, I’m Bhavesh Ittadwar!
-          </h2>
+          <h2 className="text-sky-400 text-2xl font-medium">Hi, I’m Bhavesh Ittadwar!</h2>
 
-          {/* Sequential underlines */}
           <p className="text-white max-w-md text-5xl font-bold leading-tight tracking-tight">
             A{' '}
             <span className="underline-anim" style={{ '--delay': '0s' }}>
@@ -81,10 +77,8 @@ export default function Panel() {
             I’m keen about the web from a packet to pixel level.
           </p>
 
-          {/* REDUCED GAP HERE (from gap-4 → gap-2) */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mt-4">
             <PanelCTA />
-
             {socialLinks.map(({ name, href, Icon }) => (
               <a
                 key={name}
@@ -101,5 +95,5 @@ export default function Panel() {
         </motion.div>
       </div>
     </div>
-  );
+  )
 }
