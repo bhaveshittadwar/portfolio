@@ -4,6 +4,83 @@ html, body {
   padding: 0;
 }
 
+html, body, *, *::before, *::after {
+  cursor: none !important;
+}
+
+header button:focus {
+  cursor: none !important;
+  outline: none !important;
+}
+
+header button:focus-visible {
+  cursor: none !important;
+  outline: none !important;
+}
+
+*:focus-visible {
+  outline: none;
+  cursor: none !important;
+}
+
+.cursor-dot {
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  box-shadow: 0 0 8px 4px rgba(255,255,255,0.4);
+  backdrop-filter: blur(2px);
+}
+
+.cursor-outline {
+  width: 32px;
+  height: 32px;
+
+  background-color:rgba(255, 255, 255, 0.2);
+}
+
+.cursor-dot, .cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.cursor-dot.visible, .cursor-outline.visible {
+  opacity: 1;
+}
+
+.cursor-dot.clicked {
+  width: 8px;
+  height: 8px;
+}
+
+.cursor-outline.clicked {
+  width: 72px;
+  height: 72px;
+}
+
+.cursor-outline.hovered:not(.clicked) {
+  width: 64px;
+  height: 64px;
+}
+
+.cursor-dot.hovered:not(.clicked) {
+  width: 8px;
+  height: 8px;
+}
+
+.cursor-dot.fading {
+  width: 32px;
+  height: 32px;
+  opacity: 0;
+  transition: width 250ms ease, height 250ms ease, opacity 400ms ease;
+}
+
+
 .scroll-wrapper {
   border-radius: 12px;
   overflow: hidden;
@@ -45,4 +122,38 @@ html, body {
 #scroll-container {
     scrollbar-color: #52525b transparent;
     scrollbar-width: thin;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(180deg) scale(1.15);
+  }
+  40% {
+    transform: rotate(360deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1); /* hold */
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 2.5s linear infinite;
+}
+
+.cursor-dot,
+.cursor-outline {
+  transition: width 150ms ease, height 150ms ease, opacity 150ms ease;
 }

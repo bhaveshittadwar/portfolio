@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useRef, useState } from 'react'
-import AnimatedCursor from 'react-animated-cursor'
+import { useEffect, useRef, useState } from 'react'
 import useMedia from 'use-media'
 
 import Header from './components/Header.jsx'
@@ -18,6 +17,113 @@ function AppLayout() {
   const [snapEnabled, setSnapEnabled] = useState(true)
   const isMobile = useMedia({ maxWidth: 768 })
 
+  useEffect(() => {
+    const dot = document.querySelector('[data-cursor-dot]');
+    const outline = document.querySelector('[data-cursor-outline]');
+    if (!dot || !outline) return;
+  
+    const offset = (x, y) => `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+    let initialized = false;
+  
+    const move = (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      const position = offset(x, y);
+  
+      dot.style.transform = position;
+  
+      const iframe = document.getElementById('iframe-wrapper');
+      const buffer = 60;
+      const isNearIframe =
+        iframe &&
+        (() => {
+          const rect = iframe.getBoundingClientRect();
+          return (
+            x > rect.left - buffer &&
+            x < rect.right + buffer &&
+            y > rect.top - buffer &&
+            y < rect.bottom + buffer
+          );
+        })();
+
+      const overCodeButton = document
+        .querySelector('a[href*="github.com/bhaveshittadwar/game-of-life"]')
+        ?.getBoundingClientRect();
+
+      const isOnCodeButton =
+        overCodeButton &&
+        x >= overCodeButton.left &&
+        x <= overCodeButton.right &&
+        y >= overCodeButton.top &&
+        y <= overCodeButton.bottom;
+
+      const hideCursor = isNearIframe && !isOnCodeButton;
+      if (hideCursor) {
+        dot.classList.add('fading');
+        dot.style.opacity = '0';
+        outline.style.opacity = '0';
+      } else {
+        dot.classList.remove('fading');
+        dot.style.opacity = '1';
+        outline.style.opacity = '1';
+      }
+
+      if (!initialized) {
+        outline.style.transform = position;
+        dot.classList.add('visible');
+        outline.classList.add('visible');
+        initialized = true;
+      } else {
+        outline.animate({ transform: position }, { duration: 500, fill: 'forwards' });
+      }
+    };
+  
+    const press = () => {
+      dot.classList.add('clicked');
+      outline.classList.add('clicked');
+    };
+    const release = () => {
+      dot.classList.remove('clicked');
+      outline.classList.remove('clicked');
+    };
+    const enter = () => {
+      dot.classList.add('hovered');
+      outline.classList.add('hovered');
+    };
+    const leave = () => {
+      dot.classList.remove('hovered');
+      outline.classList.remove('hovered');
+    };
+  
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mousedown', press);
+    window.addEventListener('mouseup', release);
+  
+    const targets = document.querySelectorAll(
+      "button, a, [role='button'], input[type='button'], input[type='submit']"
+    );
+    targets.forEach((el) => {
+      el.addEventListener('mouseenter', enter);
+      el.addEventListener('mouseleave', leave);
+    });
+  
+    // Fallback to show cursor if mouse was already moved
+    requestAnimationFrame(() => {
+      dot.classList.add('visible');
+      outline.classList.add('visible');
+    });
+  
+    return () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mousedown', press);
+      window.removeEventListener('mouseup', release);
+      targets.forEach((el) => {
+        el.removeEventListener('mouseenter', enter);
+        el.removeEventListener('mouseleave', leave);
+      });
+    };
+  }, []);
+
   const handleNavClick = (sectionId) => {
     setSnapEnabled(false)
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
@@ -31,21 +137,13 @@ function AppLayout() {
   return (
     <>
       {!isMobile && (
-        <AnimatedCursor
-          innerSize={12}
-          outerSize={32}
-          color="255,255,255"
-          outerAlpha={0.2}
-          innerScale={0.8}
-          outerScale={2}
-          trailingSpeed={8}
-          clickables={['a', 'button', '.pushable']}
-          innerStyle={{
-            boxShadow: '0 0 8px 4px rgba(255,255,255,0.4)',
-            backdropFilter: 'blur(2px)',
-          }}
-        />
+        <div className="cursor-dot" data-cursor-dot></div>
       )}
+      {!isMobile && (
+        <div className="cursor-outline" data-cursor-outline></div>
+      )}
+
+
 
       <div className="sticky top-0 z-50 bg-gradient-to-r from-gray-950 to-zinc-800">
         <Header onNavClick={handleNavClick} />
