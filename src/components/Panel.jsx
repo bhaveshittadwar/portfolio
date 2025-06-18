@@ -60,12 +60,14 @@ export default function Panel() {
               onLoad={() => {
                 const loader = document.getElementById("iframe-loader");
                 if (loader) {
-                  loader.style.opacity = "0";
-                  loader.style.pointerEvents = "none";
-                  setTimeout(() => loader.remove(), 400);
+                  setTimeout(() => {
+                    loader.style.opacity = "0";
+                    loader.style.pointerEvents = "none";
+                    setTimeout(() => loader.remove(), 400);
+                  }, 900);
                 }
               }}
-              
+
             />
         </div>
 
