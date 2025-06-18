@@ -27,7 +27,7 @@ export default function PanelCTA() {
       <span className="shadow" />
       <span className="edge" />
       <span className="front">
-        <span className="btn-text">See Projects</span>
+        <span className="btn-text">See Projects</span>
         <FaArrowRight />
       </span>
     </button>

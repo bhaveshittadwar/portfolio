@@ -3,6 +3,8 @@ import photo from '../assets/panelPic.jpeg'
 import PanelCTA from './PanelCTA'
 import { FaLinkedin, FaGithub, FaFilePdf } from 'react-icons/fa'
 import './PanelAnimations.css'
+import logo from '../assets/logo.png';
+
 
 const socialLinks = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/bhavesh-ittadwar/', Icon: FaLinkedin },
@@ -29,18 +31,57 @@ export default function Panel() {
             href="https://github.com/bhaveshittadwar/game-of-life"
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute top-3 right-3 text-xs font-semibold text-sky-300 bg-zinc-800/70 px-3 py-1 rounded-md border border-gray-600 backdrop-blur hover:bg-sky-400 hover:text-gray-900 transition"
+            className="z-20 absolute top-3 right-3 text-xs font-semibold text-sky-300 bg-zinc-800/70 px-3 py-1 rounded-md border border-gray-600 backdrop-blur hover:bg-sky-400 hover:text-gray-900 transition"
           >
             View Code ↗
           </a>
-          <iframe
-            src="https://game-of-life-withered-snow-9415.fly.dev/"
-            title="Game of Life – Bhavesh Ittadwar"
-            className="w-full h-full"
-            loading="lazy"
-            frameBorder="0"
-            scrolling="no"
-          />
+          <div className="w-full h-full relative" id="iframe-wrapper">
+            {/* Loader overlay */}
+            <div
+              id="iframe-loader"
+              className="absolute inset-0 z-10 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+            >
+              <img
+                src={logo}
+                alt="Loading"
+                className="w-12 h-12 animate-spin-slow"
+              />
+            </div>
+
+
+            {/* Iframe */}
+            <iframe
+              src="https://game-of-life-withered-snow-9415.fly.dev/"
+              title="Game of Life – Bhavesh Ittadwar"
+              className="w-full h-full relative z-0"
+              loading="lazy"
+              frameBorder="0"
+              scrolling="no"
+              onLoad={() => {
+                const loader = document.getElementById("iframe-loader");
+                const iframe = document.querySelector("iframe");
+              
+                setTimeout(() => {
+                  let isLoaded = false;
+              
+                  try {
+                    // May throw CORS error if blocked
+                    const doc = iframe?.contentDocument || iframe?.contentWindow?.document;
+                    isLoaded = doc && doc.body && doc.body.childElementCount > 0;
+                  } catch (err) {
+                    // Do nothing: iframe is blocked (CORS or X-Frame-Options)
+                    isLoaded = false;
+                  }
+              
+                  if (isLoaded && loader) {
+                    loader.style.display = "none";
+                  }
+                  // else: keep loader visible
+                }, 200);
+              }}
+            />
+        </div>
+
         </motion.div>
 
         {/* Hero & CTA */}
@@ -62,16 +103,16 @@ export default function Panel() {
           <h2 className="text-sky-400 text-2xl font-medium">Hi, I’m Bhavesh Ittadwar!</h2>
 
           <p className="text-white max-w-md text-5xl font-bold leading-tight tracking-tight">
-            A{' '}
-            <span className="underline-anim" style={{ '--delay': '0s' }}>
-              front‑end
-            </span>{' '}
-            leaning{' '}
-            <span className="underline-anim" style={{ '--delay': '2.5s' }}>
-              fullstack
-            </span>{' '}
-            developer.
-          </p>
+          A{" "}
+          <span className="underline-anim" style={{ "--delay": "0s" }}>
+            front‑end
+          </span>{" "}
+          leaning{" "}
+          <span className="underline-anim" style={{ "--delay": "2.5s" }}>
+            fullstack
+          </span>{" "}
+          developer.
+        </p>
 
           <p className="text-white text-lg font-medium max-w-md">
             I’m keen about the web from a packet to pixel level.
