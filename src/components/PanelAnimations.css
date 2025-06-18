@@ -1,4 +1,4 @@
-/* Pulsing photo */
+
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50%      { transform: scale(1.03); }
@@ -9,8 +9,6 @@
   border-radius: 9999px;
   animation: pulse 3s ease-in-out infinite;
 }
-
-/* Grow L→R then shrink L→R */
 @keyframes underlineLR {
   0% {
     transform-origin: left;
@@ -42,7 +40,6 @@
   bottom: 0;
   height: 2px;
   width: 100%;
-  /* metallic base + subtle sheen */
   background:
     linear-gradient(
       90deg,
@@ -50,9 +47,10 @@
       rgba(255,255,255,0.35) 50%,
       rgba(255,255,255,0.15) 100%
     ),
-    #38bdf8; /* Tailwind sky-400 base color */
+    #38bdf8;
   background-blend-mode: overlay;
   transform: scaleX(0);
+  transform-origin: left;
   animation: underlineLR 4s ease-in-out forwards;
   animation-delay: var(--delay, 0s);
 }
