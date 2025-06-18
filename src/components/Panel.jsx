@@ -59,26 +59,13 @@ export default function Panel() {
               scrolling="no"
               onLoad={() => {
                 const loader = document.getElementById("iframe-loader");
-                const iframe = document.querySelector("iframe");
-              
-                setTimeout(() => {
-                  let isLoaded = false;
-              
-                  try {
-                    // May throw CORS error if blocked
-                    const doc = iframe?.contentDocument || iframe?.contentWindow?.document;
-                    isLoaded = doc && doc.body && doc.body.childElementCount > 0;
-                  } catch (err) {
-                    // Do nothing: iframe is blocked (CORS or X-Frame-Options)
-                    isLoaded = false;
-                  }
-              
-                  if (isLoaded && loader) {
-                    loader.style.display = "none";
-                  }
-                  // else: keep loader visible
-                }, 200);
+                if (loader) {
+                  loader.style.opacity = "0";
+                  loader.style.pointerEvents = "none";
+                  setTimeout(() => loader.remove(), 400);
+                }
               }}
+              
             />
         </div>
 

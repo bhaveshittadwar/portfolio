@@ -70,6 +70,11 @@ function AppLayout() {
 
       if (!initialized) {
         outline.style.transform = position;
+        dot.style.display = 'block';
+        outline.style.display = 'block';
+        dot.classList.add('visible');
+        outline.classList.add('visible');
+
         dot.classList.add('visible');
         outline.classList.add('visible');
         initialized = true;
@@ -137,10 +142,10 @@ function AppLayout() {
   return (
     <>
       {!isMobile && (
-        <div className="cursor-dot" data-cursor-dot></div>
+        <div className="cursor-dot" data-cursor-dot style={{ display: 'none' }}></div>
       )}
       {!isMobile && (
-        <div className="cursor-outline" data-cursor-outline></div>
+        <div className="cursor-outline" data-cursor-outline style={{ display: 'none' }}></div>
       )}
 
 
