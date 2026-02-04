@@ -1,8 +1,50 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Dialog, Popover } from '@headlessui/react'
 import { motion } from 'framer-motion'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logo from '../assets/logo.png'
+
+function useHeaderTilt(headerRef) {
+  // Initial state: subtle top-left position for header
+  const initialGlow = { x: 20, y: 20 }
+  const initialTransform = 'perspective(1000px) rotateX(2deg) rotateY(-2deg) scale3d(1, 1, 1)'
+
+  const [transform, setTransform] = useState(initialTransform)
+  const [glowPosition, setGlowPosition] = useState(initialGlow)
+
+  useEffect(() => {
+    const header = headerRef.current
+    if (!header) return
+
+    const handleMouseMove = (e) => {
+      const rect = header.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      const centerX = rect.width / 2
+      const centerY = rect.height / 2
+      const rotateX = ((y - centerY) / centerY) * -4
+      const rotateY = ((x - centerX) / centerX) * 4
+
+      setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`)
+      setGlowPosition({ x: (x / rect.width) * 100, y: (y / rect.height) * 100 })
+    }
+
+    const handleMouseLeave = () => {
+      setTransform(initialTransform)
+      setGlowPosition(initialGlow)
+    }
+
+    header.addEventListener('mousemove', handleMouseMove)
+    header.addEventListener('mouseleave', handleMouseLeave)
+
+    return () => {
+      header.removeEventListener('mousemove', handleMouseMove)
+      header.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }, [headerRef])
+
+  return { transform, glowPosition }
+}
 
 const sections = ['panel', 'skills', 'education', 'experience', 'projects', 'footer']
 const fancyLinkClass =
@@ -10,6 +52,8 @@ const fancyLinkClass =
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const headerRef = useRef(null)
+  const { transform, glowPosition } = useHeaderTilt(headerRef)
 
   const moveTo = (anchor) => {
     const target = document.getElementById(anchor)
@@ -18,13 +62,31 @@ export default function Header() {
 
   return (
     <motion.header
+      ref={headerRef}
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="bg-gray-950/60 backdrop-blur-xl border-b lg:border border-sky-500/15 lg:shadow-[0_0_20px_rgba(56,189,248,0.08)] sticky top-0 lg:top-6 w-full lg:w-[calc(100%-4rem)] lg:mx-auto lg:rounded-full z-10"
-      style={{ '--header-height': '4.5rem' }}
+      className="backdrop-blur-xl border-b lg:border border-sky-500/15 lg:shadow-[0_0_20px_rgba(56,189,248,0.08)] sticky top-0 lg:top-6 w-full lg:w-[calc(100%-4rem)] lg:mx-auto lg:rounded-full z-10 relative overflow-hidden transition-transform duration-200 ease-out"
+      style={{
+        '--header-height': '4.5rem',
+        transform,
+        background: `
+          radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+          linear-gradient(135deg, rgba(148, 163, 184, 0.03) 0%, rgba(51, 65, 85, 0.03) 100%),
+          rgba(3, 7, 18, 0.6)
+        `,
+      }}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-4 h-[var(--header-height)]">
+      {/* Metallic shine overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-20 lg:rounded-full"
+        style={{
+          background: `linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.08) 50%, transparent 70%)`,
+          transform: `translateX(${(glowPosition.x - 50) * 0.5}%)`,
+          transition: 'transform 0.2s ease-out',
+        }}
+      />
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-4 h-[var(--header-height)] relative z-10">
         {/* Logo + Name */}
         <button
           onClick={() => moveTo('panel')}

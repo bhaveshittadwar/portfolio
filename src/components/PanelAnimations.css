@@ -9,6 +9,17 @@
   border-radius: 9999px;
   animation: pulse 3s ease-in-out infinite;
 }
+
+@keyframes pulse-subtle {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.015); }
+}
+
+.pulse-image-subtle {
+  display: block;
+  border-radius: 9999px;
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
 @keyframes underlineSlide {
   from {
     transform: scaleX(0);
