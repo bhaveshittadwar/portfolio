@@ -71,7 +71,7 @@ export default function Header() {
         '--header-height': '4.5rem',
         transform,
         background: `
-          radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+          radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, rgba(56, 189, 248, 0.06) 0%, transparent 50%),
           linear-gradient(135deg, rgba(148, 163, 184, 0.03) 0%, rgba(51, 65, 85, 0.03) 100%),
           rgba(3, 7, 18, 0.6)
         `,
