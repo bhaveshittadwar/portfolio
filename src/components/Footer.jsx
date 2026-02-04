@@ -8,7 +8,7 @@ const Footer = ({ onNavClick }) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className="flex flex-col justify-between bg-gradient-to-r from-gray-950 to-zinc-800"
+      className="flex flex-col justify-between bg-gray-950/5"
     >
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">

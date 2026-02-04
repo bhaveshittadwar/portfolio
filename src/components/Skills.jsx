@@ -58,7 +58,7 @@ export default function Skills() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       viewport={{ once: true, amount: 0.3 }}
-      className="relative isolate min-h-[calc(100vh-4.5rem)] bg-gradient-to-r from-gray-950 to-zinc-800 py-24 sm:py-32 flex items-center"
+      className="relative isolate min-h-[calc(100vh-4.5rem)] bg-gray-950/5 py-24 sm:py-32 flex items-center"
     >
       <div className="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0" aria-hidden="true" />
 
@@ -68,8 +68,8 @@ export default function Skills() {
         </h1>
 
         <div
-          className="w-full sm:w-[768px] coding inverse-toggle px-5 pt-4 shadow-lg text-gray-100 
-            text-sm font-mono bg-gray-800 pb-6 rounded-lg leading-normal break-words"
+          className="w-full sm:w-[768px] coding inverse-toggle px-5 pt-4 shadow-lg text-gray-100
+            text-sm font-mono bg-slate-950/95 pb-6 rounded-lg leading-normal break-words border border-slate-800/50"
         >
           <div className="top mb-2 flex">
             <div className="h-3 w-3 bg-red-500 rounded-full"></div>
@@ -83,7 +83,7 @@ export default function Skills() {
                 key={idx}
                 className="grid grid-cols-[max-content_minmax(0,1fr)] gap-x-4 items-start mt-1"
               >
-                <span className="text-green-400 whitespace-nowrap">
+                <span className="text-sky-400 whitespace-nowrap drop-shadow-[0_0_4px_rgba(56,189,248,0.25)]">
                   {skill.category}:~$
                 </span>
                 <p className="text-gray-100 min-w-0 break-words">

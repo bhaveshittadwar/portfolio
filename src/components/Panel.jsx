@@ -16,7 +16,7 @@ export default function Panel() {
   return (
     <div
       id="panel"
-      className="min-h-[calc(100vh-4.5rem)] w-full bg-gradient-to-r from-gray-950 to-zinc-800 flex items-center justify-center px-6 lg:px-8 py-12"
+      className="min-h-[calc(100vh-4.5rem)] w-full bg-gray-950/5 flex items-center justify-center px-6 lg:px-8 py-12"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 w-full max-w-7xl items-center">
         {/* Game embed */}
@@ -31,7 +31,7 @@ export default function Panel() {
             href="https://github.com/bhaveshittadwar/game-of-life"
             target="_blank"
             rel="noopener noreferrer"
-            className="z-20 absolute top-3 right-3 text-xs font-semibold text-sky-300 bg-zinc-800/70 px-3 py-1 rounded-md border border-gray-600 backdrop-blur hover:bg-sky-400 hover:text-gray-900 transition"
+            className="z-20 absolute top-3 right-3 text-xs font-semibold text-sky-300 bg-zinc-800/70 px-3 py-1 rounded-md border border-sky-500/30 backdrop-blur hover:bg-sky-400 hover:text-gray-900 hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.6)] transition"
           >
             View Code ↗
           </a>
@@ -89,7 +89,8 @@ export default function Panel() {
             aria-hidden="true"
           />
 
-          <h2 className="text-sky-400 text-lg sm:text-xl lg:text-2xl font-medium">Hi, I'm Bhavesh Ittadwar!</h2>
+          <h2 className="text-sky-400 text-lg sm:text-xl lg:text-2xl font-medium drop-shadow-[0_0_6px_rgba(56,189,248,0.3)]">Hi, I'm Bhavesh Ittadwar!</h2>
+
 
           <p className="text-white max-w-md text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
           A{" "}
@@ -115,7 +116,7 @@ export default function Panel() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 px-2 py-2 text-white hover:text-sky-400 transition"
+                className="inline-flex items-center gap-1 px-2 py-2 text-white hover:text-sky-300 hover:drop-shadow-[0_0_8px_rgba(125,211,252,0.4)] transition"
               >
                 <Icon className="w-5 h-5" />
                 <span className="text-sm">{name}</span>

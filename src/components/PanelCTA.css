@@ -1,7 +1,7 @@
 /* Container */
 .pushable {
     position: relative;
-    background: hsl(198, 99%, 27%);
+    background: hsl(199, 85%, 30%);
     border-radius: 12px;
     border: none;
     padding: 0;
@@ -25,7 +25,7 @@
     pointer-events: none;
   }
   
-  /* LAYER 1: the “edge” extrusion */
+  /* LAYER 1: the "edge" extrusion */
   .pushable .edge {
     position: absolute;
     top: 0; left: 0;
@@ -33,10 +33,10 @@
     border-radius: 12px;
     background: linear-gradient(
       to left,
-      hsl(198,100%,20%)   0%,
-      hsl(198,100%,32%)   8%,
-      hsl(198,100%,32%)  92%,
-      hsl(198,100%,20%)  100%
+      hsl(199,85%,25%)   0%,
+      hsl(199,85%,35%)   8%,
+      hsl(199,85%,35%)  92%,
+      hsl(199,85%,25%)  100%
     );
     z-index: 1;
   }
@@ -49,7 +49,7 @@
     gap: 0.5rem;
     padding: 12px 24px;
     border-radius: 12px;
-    background: hsl(198, 93%, 60%);
+    background: hsl(199, 85%, 52%);
     color: white;
     transform: translateY(-5px);
     will-change: transform, box-shadow;
@@ -57,7 +57,7 @@
     overflow: hidden;
     z-index: 2;
     /* base shadow for slight lift */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15), 0 0 12px rgba(56,189,248,0.15);
     text-shadow: 0 2px 2.5px rgba(0,0,0,0.5);
   }
   

@@ -6,7 +6,7 @@ import logo from '../assets/logo.png'
 
 const sections = ['panel', 'skills', 'education', 'experience', 'projects', 'footer']
 const fancyLinkClass =
-  'hover:-translate-y-1 hover:text-blue-400 hover:drop-shadow-[0_0_10px_rgba(93,188,252,0.4)] transition-all duration-300'
+  'drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:-translate-y-1 hover:text-sky-400 hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.4)] transition-all duration-300'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -21,17 +21,17 @@ export default function Header() {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="bg-gradient-to-r from-gray-950 to-zinc-800 sticky top-0 w-full z-10"
+      className="bg-gray-950/60 backdrop-blur-xl border-b lg:border border-sky-500/15 lg:shadow-[0_0_20px_rgba(56,189,248,0.08)] sticky top-0 lg:top-6 w-full lg:w-[calc(100%-4rem)] lg:mx-auto lg:rounded-full z-10"
       style={{ '--header-height': '4.5rem' }}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 h-[var(--header-height)]">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-4 h-[var(--header-height)]">
         {/* Logo + Name */}
         <button
           onClick={() => moveTo('panel')}
           className="flex items-center cursor-pointer select-none"
         >
           <img src={logo} alt="Logo" className="w-10 h-10 rounded-full" />
-          <span className="ml-2 text-white font-semibold">Bhavesh Ittadwar</span>
+          <span className="ml-2 text-white font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">Bhavesh Ittadwar</span>
         </button>
 
         {/* Desktop nav */}
@@ -50,7 +50,7 @@ export default function Header() {
               >
                 <button
                   onClick={() => moveTo(section)}
-                  className={`text-base font-semibold leading-6 text-white rounded-md ${fancyLinkClass} ${isProjects ? 'text-blue-400' : ''}`}
+                  className={`text-base font-semibold leading-6 text-white rounded-md ${fancyLinkClass} ${isProjects ? 'text-sky-400 drop-shadow-[0_0_6px_rgba(56,189,248,0.35)]' : ''}`}
                 >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
                 </button>
@@ -69,7 +69,7 @@ export default function Header() {
         {/* Mobile menu panel */}
         <Dialog open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} className="lg:hidden">
           <div className="fixed inset-0 z-10" />
-          <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full bg-gradient-to-r from-gray-950 to-zinc-800 p-6">
+          <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full bg-gray-950/95 backdrop-blur-md p-6">
             <div className="flex items-center justify-between mb-6">
               <img src={logo} alt="Logo" className="w-10 h-10 rounded-full" />
               <button onClick={() => setMobileMenuOpen(false)} className="p-2.5 text-white">
@@ -94,7 +94,7 @@ export default function Header() {
                         setMobileMenuOpen(false)
                         moveTo(section)
                       }}
-                      className={`block px-3 py-2 text-base font-semibold text-white rounded-md ${fancyLinkClass} ${isProjects ? 'text-blue-400' : ''}`}
+                      className={`block px-3 py-2 text-base font-semibold text-white rounded-md ${fancyLinkClass} ${isProjects ? 'text-sky-400 drop-shadow-[0_0_6px_rgba(56,189,248,0.35)]' : ''}`}
                     >
                       {section.charAt(0).toUpperCase() + section.slice(1)}
                     </button>

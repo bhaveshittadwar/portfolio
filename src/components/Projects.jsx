@@ -74,7 +74,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="min-h-[calc(100vh-4.5rem)] flex items-center bg-gradient-to-r from-gray-950 to-zinc-800 py-24 sm:py-32"
+      className="min-h-[calc(100vh-4.5rem)] bg-gray-950/5 flex items-center py-24 sm:py-32"
     >
       <div className="mx-auto px-6 lg:px-24 w-full">
         <motion.h1

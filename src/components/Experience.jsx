@@ -26,7 +26,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="min-h-[calc(100vh-4.5rem)] relative isolate overflow-hidden bg-gradient-to-r from-gray-950 to-zinc-800 py-24 sm:py-32 flex items-center justify-center"
+      className="min-h-[calc(100vh-4.5rem)] bg-gray-950/5 relative isolate overflow-hidden  py-24 sm:py-32 flex items-center justify-center"
     >
       <motion.div
         className="flex flex-col items-center px-6 lg:px-8"

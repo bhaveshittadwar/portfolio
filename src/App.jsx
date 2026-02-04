@@ -10,6 +10,7 @@ import Experience from './components/Experience.jsx'
 import Projects from './components/Projects.jsx'
 import Footer from './components/Footer.jsx'
 import NoPage from './components/NoPage.jsx'
+import ReactionDiffusion from './components/ReactionDiffusion.jsx'
 import './App.css'
 
 function AppLayout() {
@@ -141,6 +142,8 @@ function AppLayout() {
 
   return (
     <>
+      <ReactionDiffusion />
+
       {!isMobile && (
         <div className="cursor-dot" data-cursor-dot style={{ display: 'none' }}></div>
       )}
@@ -148,16 +151,14 @@ function AppLayout() {
         <div className="cursor-outline" data-cursor-outline style={{ display: 'none' }}></div>
       )}
 
-
-
-      <div className="sticky top-0 z-50 bg-gradient-to-r from-gray-950 to-zinc-800">
+      <div className="lg:pt-6 z-50">
         <Header onNavClick={handleNavClick} />
       </div>
 
       <div
         id="scroll-container"
         ref={scrollContainerRef}
-        className={`h-[calc(100vh-4.5rem)] overflow-y-auto ${
+        className={`h-[calc(100vh-4.5rem)] lg:h-[calc(100vh-4.5rem-1.5rem)] overflow-y-auto ${
           snapEnabled ? 'snap-y snap-mandatory' : 'scroll-smooth'
         }`}
       >
