@@ -18,10 +18,10 @@ export default function Panel() {
       id="panel"
       className="min-h-[calc(100vh-4.5rem)] w-full bg-gradient-to-r from-gray-950 to-zinc-800 flex items-center justify-center px-6 lg:px-8 py-12"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 w-full max-w-7xl items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 w-full max-w-7xl items-center">
         {/* Game embed */}
         <motion.div
-          className="order-2 lg:order-1 relative w-full h-[480px] rounded-xl border border-gray-700 bg-zinc-900/40 shadow-lg overflow-hidden transform transition hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(93,188,252,0.25)] backdrop-blur-sm"
+          className="order-2 lg:order-1 relative w-full h-[280px] sm:h-[350px] md:h-[400px] lg:h-[480px] rounded-xl border border-gray-700 bg-zinc-900/40 shadow-lg overflow-hidden transform transition hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(93,188,252,0.25)] backdrop-blur-sm"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -75,7 +75,7 @@ export default function Panel() {
 
         {/* Hero & CTA */}
         <motion.div
-          className="order-1 lg:order-2 flex flex-col items-center text-center gap-y-6"
+          className="order-1 lg:order-2 flex flex-col items-center text-center gap-y-4 lg:gap-y-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -84,27 +84,27 @@ export default function Panel() {
           <motion.img
             src={photo}
             alt="Bhavesh Ittadwar"
-            className="h-32 w-32 sm:h-48 sm:w-48 object-cover rounded-full border-2 border-slate-300 pulse-image"
+            className="h-24 w-24 sm:h-32 sm:w-32 lg:h-48 lg:w-48 object-cover rounded-full border-2 border-slate-300 pulse-image"
             style={{ objectPosition: '0% 20%' }}
             aria-hidden="true"
           />
 
-          <h2 className="text-sky-400 text-2xl font-medium">Hi, I’m Bhavesh Ittadwar!</h2>
+          <h2 className="text-sky-400 text-lg sm:text-xl lg:text-2xl font-medium">Hi, I'm Bhavesh Ittadwar!</h2>
 
-          <p className="text-white max-w-md text-5xl font-bold leading-tight tracking-tight">
+          <p className="text-white max-w-md text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
           A{" "}
-          <span className="underline-anim" style={{ "--delay": "0s" }}>
+          <span className="underline-anim underline-anim-first">
             front‑end
           </span>{" "}
           leaning{" "}
-          <span className="underline-anim" style={{ "--delay": "2.5s" }}>
+          <span className="underline-anim underline-anim-second">
             fullstack
           </span>{" "}
           developer.
         </p>
 
-          <p className="text-white text-lg font-medium max-w-md">
-            I’m keen about the web from a packet to pixel level.
+          <p className="text-white text-sm sm:text-base lg:text-lg font-medium max-w-md">
+            I'm keen about the web from a packet to pixel level.
           </p>
 
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mt-4">

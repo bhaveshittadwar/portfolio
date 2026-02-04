@@ -136,7 +136,7 @@ function AppLayout() {
     clearTimeout(window.snapTimeout)
     window.snapTimeout = setTimeout(() => {
       setSnapEnabled(true)
-    }, 3200)
+    }, 1000)
   }
 
   return (
@@ -157,8 +157,8 @@ function AppLayout() {
       <div
         id="scroll-container"
         ref={scrollContainerRef}
-        className={`h-[calc(100vh-4.5rem)] overflow-y-auto scroll-smooth ${
-          snapEnabled ? 'snap-y snap-mandatory' : ''
+        className={`h-[calc(100vh-4.5rem)] overflow-y-auto ${
+          snapEnabled ? 'snap-y snap-mandatory' : 'scroll-smooth'
         }`}
       >
         <section id="panel" className="snap-start"><Panel /></section>

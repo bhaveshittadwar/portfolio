@@ -9,27 +9,18 @@
   border-radius: 9999px;
   animation: pulse 3s ease-in-out infinite;
 }
-@keyframes underlineLR {
-  0% {
-    transform-origin: left;
+@keyframes underlineSlide {
+  from {
     transform: scaleX(0);
   }
-  50% {
-    transform-origin: left;
+  to {
     transform: scaleX(1);
-  }
-  50.0001% {
-    transform-origin: right;
-    transform: scaleX(1);
-  }
-  100% {
-    transform-origin: right;
-    transform: scaleX(0);
   }
 }
 
 .underline-anim {
   position: relative;
+  display: inline-block;
   padding-bottom: 2px;
 }
 
@@ -37,20 +28,17 @@
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
-  height: 2px;
+  bottom: -2px;
+  height: 3px;
   width: 100%;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,0.15) 0%,
-      rgba(255,255,255,0.35) 50%,
-      rgba(255,255,255,0.15) 100%
-    ),
-    #38bdf8;
-  background-blend-mode: overlay;
-  transform: scaleX(0);
+  background: #38bdf8;
   transform-origin: left;
-  animation: underlineLR 4s ease-in-out forwards;
-  animation-delay: var(--delay, 0s);
+}
+
+.underline-anim-first::after {
+  animation: underlineSlide 0.6s ease-out 0.5s both;
+}
+
+.underline-anim-second::after {
+  animation: underlineSlide 0.6s ease-out 1.2s both;
 }

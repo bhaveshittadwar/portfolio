@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import useMedia from 'use-media'
 import './Skills.css'
 
 const skills = [
@@ -15,6 +16,7 @@ const skills = [
 export default function Skills() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.3 })
+  const isMobile = useMedia({ maxWidth: 768 })
 
   const [displayed, setDisplayed] = useState(skills.map(() => ''))
   const [finishedCount, setFinishedCount] = useState(0)
@@ -23,6 +25,13 @@ export default function Skills() {
     if (!inView) return
     let alive = true
 
+    // On mobile, show all text immediately
+    if (isMobile) {
+      setDisplayed(skills.map(s => s.skillList))
+      return
+    }
+
+    // On desktop, animate typewriter effect
     skills.forEach(({ skillList }, idx) => {
       ;(async () => {
         for (let i = 1; i <= skillList.length; i++) {
@@ -39,7 +48,7 @@ export default function Skills() {
     })
 
     return () => { alive = false }
-  }, [inView])
+  }, [inView, isMobile])
 
   return (
     <motion.div
