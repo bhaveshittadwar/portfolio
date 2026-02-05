@@ -5,18 +5,9 @@ import './index.css'
 
 const rootElement = document.getElementById('root')
 
-// Use hydrate if the page was pre-rendered by react-snap
+// Hydrate if pre-rendered, otherwise render normally
 if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrateRoot(
-    rootElement,
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  )
+  ReactDOM.hydrateRoot(rootElement, <App />)
 } else {
-  ReactDOM.createRoot(rootElement).render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  )
+  ReactDOM.createRoot(rootElement).render(<App />)
 }
